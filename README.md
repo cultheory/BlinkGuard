@@ -16,15 +16,15 @@ Pressing `Esc` also hides the overlay, and pressing `Ctrl+Alt+Q` force-quits the
 
 ## Run
 
-Run [run.bat](C:\Users\siski\Documents\Codex1\run.bat).
+To run the app, execute `run.bat`.
 
-This script creates `.venv` if needed, installs required packages, and starts the app.
+This script creates a `.venv` virtual environment if needed, installs the required packages, and launches the app.
 
 ## Build
 
-Run [package.bat](C:\Users\siski\Documents\Codex1\package.bat).
+To build the app, execute `package.bat`.
 
-After a successful build, the executable is created at [dist/BlinkGuard/BlinkGuard.exe](C:\Users\siski\Documents\Codex1\dist\BlinkGuard\BlinkGuard.exe).
+After a successful build, the executable will be available at `dist/BlinkGuard/BlinkGuard.exe`.
 
 ## UI
 
@@ -33,8 +33,8 @@ After a successful build, the executable is created at [dist/BlinkGuard/BlinkGua
 - `No blink timeout (seconds)`
 
 ## Notes
-
+Currently,
 - Single monitor only
-- Camera `0` only
+- Supports only the default webcam (camera 0)
 - No tray, stats, or extra settings
 - Overlay is created once and reused
