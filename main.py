@@ -21,7 +21,10 @@ HOTKEY_ID_QUIT = 1
 MOD_ALT = 0x0001
 MOD_CONTROL = 0x0002
 VK_Q = 0x51
+VK_CONTROL = 0x11
+VK_MENU = 0x12
 WM_HOTKEY = 0x0312
+KEY_PRESSED = 0x8000
 
 LEFT_EYE = (33, 160, 158, 133, 153, 144)
 RIGHT_EYE = (362, 385, 387, 263, 373, 380)
@@ -187,6 +190,7 @@ class BlinkGuardApp:
         self.stop_event = threading.Event()
         self.worker = None
         self.hotkey_registered = False
+        self.quit_hotkey_latched = False
 
         self.build_main_window()
         self.build_overlay()
@@ -247,6 +251,23 @@ class BlinkGuardApp:
         if self.hotkey_registered:
             user32.UnregisterHotKey(None, HOTKEY_ID_QUIT)
             self.hotkey_registered = False
+
+    def is_key_down(self, vk_code):
+        return bool(user32.GetAsyncKeyState(vk_code) & KEY_PRESSED)
+
+    def process_quit_hotkey_poll(self):
+        ctrl_down = self.is_key_down(VK_CONTROL)
+        alt_down = self.is_key_down(VK_MENU)
+        q_down = self.is_key_down(VK_Q)
+
+        if ctrl_down and alt_down and q_down:
+            if not self.quit_hotkey_latched:
+                self.quit_hotkey_latched = True
+                self.force_quit()
+                return True
+        else:
+            self.quit_hotkey_latched = False
+        return False
 
     def start_monitoring(self):
         if self.monitoring:
@@ -346,6 +367,9 @@ class BlinkGuardApp:
                 return
             user32.TranslateMessage(ctypes.byref(msg))
             user32.DispatchMessageW(ctypes.byref(msg))
+
+        if self.process_quit_hotkey_poll():
+            return
 
         self.root.after(50, self.process_hotkeys)
 
