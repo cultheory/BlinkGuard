@@ -17,10 +17,10 @@ if not exist "%VENV_PYTHON%" (
 "%VENV_PYTHON%" -m ensurepip --upgrade >nul 2>nul
 "%VENV_PYTHON%" -m pip install --upgrade pip || goto :error
 "%VENV_PYTHON%" -m pip install -r requirements.txt || goto :error
-"%VENV_PYTHON%" -m PyInstaller --noconfirm --clean --windowed --name BlinkGuard --add-data "models;models" --hidden-import mediapipe.tasks.c --collect-submodules mediapipe.tasks.c --collect-binaries mediapipe.tasks.c main.py || goto :error
-echo Build complete: dist\BlinkGuard\BlinkGuard.exe
+"%VENV_PYTHON%" -m PyInstaller --noconfirm --clean --windowed --name BlinkCue --add-data "models;models" --hidden-import mediapipe.tasks.c --collect-submodules mediapipe.tasks.c --collect-binaries mediapipe.tasks.c main.py || goto :error
+echo Build complete: dist\BlinkCue\BlinkCue.exe
 goto :eof
 
 :error
-echo Failed to build BlinkGuard.
+echo Failed to build BlinkCue.
 exit /b 1

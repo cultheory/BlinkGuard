@@ -173,10 +173,10 @@ class BlinkDetectorWorker(threading.Thread):
             cap.release()
 
 
-class BlinkGuardApp:
+class BlinkCueApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("BlinkGuard")
+        self.root.title("BlinkCue")
         self.root.resizable(False, False)
         self.root.geometry("220x100")
         self.root.protocol("WM_DELETE_WINDOW", self.force_quit)
@@ -274,7 +274,7 @@ class BlinkGuardApp:
             return
         timeout_seconds = self.read_timeout_seconds()
         if timeout_seconds is None:
-            messagebox.showerror("BlinkGuard", "No blink timeout must be a number from 1 to 60.")
+            messagebox.showerror("BlinkCue", "No blink timeout must be a number from 1 to 60.")
             self.status_var.set("Invalid timeout")
             return
         self.monitoring = True
@@ -376,7 +376,7 @@ class BlinkGuardApp:
 
 def main():
     root = tk.Tk()
-    app = BlinkGuardApp(root)
+    app = BlinkCueApp(root)
     root.mainloop()
 
 

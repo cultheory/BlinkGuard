@@ -1,11 +1,11 @@
-# BlinkGuard
+# BlinkCue
 
-BlinkGuard is a minimal Windows desktop app that watches for blinks through the local webcam.
+BlinkCue is a minimal Windows desktop app that watches for blinks through the local webcam.
 
-It is designed to help protect your vision by preventing your eyes from becoming dry when you stay too focused and forget to blink. 
+It is designed to help protect your vision by preventing your eyes from becoming dry when you stay too focused and forget to blink.
 
-If a face is detected and no blink is detected for the configured number of seconds, BlinkGuard shows a fullscreen black overlay on the primary monitor. 
-When the user blinks again, the overlay is hidden immediately. 
+If a face is detected and no blink is detected for the configured number of seconds, BlinkCue shows a fullscreen black overlay on the primary monitor.
+When the user blinks again, the overlay is hidden immediately.
 Pressing `Esc` also hides the overlay, and pressing `Ctrl+Alt+Q` force-quits the app.
 
 ## Requirements
@@ -24,7 +24,7 @@ This script creates a `.venv` virtual environment if needed, installs the requir
 
 To build the app, execute `package.bat`.
 
-After a successful build, the executable will be available at `dist/BlinkGuard/BlinkGuard.exe`.
+After a successful build, the executable will be available at `dist/BlinkCue/BlinkCue.exe`.
 
 ## UI
 
@@ -33,6 +33,7 @@ After a successful build, the executable will be available at `dist/BlinkGuard/B
 - `No blink timeout (seconds)`
 
 ## Notes
+
 Currently,
 - Single monitor only
 - Supports only the default webcam (camera 0)

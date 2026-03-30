@@ -21,5 +21,5 @@ if not exist "%VENV_PYTHON%" (
 goto :eof
 
 :error
-echo Failed to run BlinkGuard.
+echo Failed to run BlinkCue.
 exit /b 1
