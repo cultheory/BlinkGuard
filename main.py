@@ -215,7 +215,7 @@ class BlinkGuardApp:
         timeout_row = tk.Frame(frame)
         timeout_row.pack(fill="x", pady=(10, 0))
 
-        timeout_label = tk.Label(timeout_row, text="눈 깜박임 없음 시간(초)", anchor="w")
+        timeout_label = tk.Label(timeout_row, text="No blink timeout (seconds)", anchor="w")
         timeout_label.pack(fill="x")
 
         timeout_entry = tk.Entry(timeout_row, textvariable=self.timeout_var)
@@ -274,7 +274,7 @@ class BlinkGuardApp:
             return
         timeout_seconds = self.read_timeout_seconds()
         if timeout_seconds is None:
-            messagebox.showerror("BlinkGuard", "blink 없음 시간은 1~60초 정수만 허용됩니다.")
+            messagebox.showerror("BlinkGuard", "No blink timeout must be a number from 1 to 60.")
             self.status_var.set("Invalid timeout")
             return
         self.monitoring = True
