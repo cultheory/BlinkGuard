@@ -1,0 +1,7 @@
+.venv/
+build/
+dist/
+__pycache__/
+run_stdout.txt
+run_stderr.txt
+BlinkGuard.spec
