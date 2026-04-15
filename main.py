@@ -35,6 +35,11 @@ def get_model_path():
     return os.path.join(base_dir, "models", "face_landmarker.task")
 
 
+def get_icon_path():
+    base_dir = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_dir, "icon.ico")
+
+
 user32 = ctypes.windll.user32
 
 
@@ -177,6 +182,9 @@ class BlinkCueApp:
     def __init__(self, root):
         self.root = root
         self.root.title("BlinkCue")
+        icon_path = get_icon_path()
+        if os.path.exists(icon_path):
+            self.root.iconbitmap(icon_path)
         self.root.resizable(False, False)
         self.root.geometry("220x100")
         self.root.protocol("WM_DELETE_WINDOW", self.force_quit)
